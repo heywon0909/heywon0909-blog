@@ -7,8 +7,13 @@ interface Props {
 }
 export default function Post({ post }: Props) {
   return (
-    <div className="w-full h-auto flex flex-col bg-white p-2 shadow-md">
-      <Image src={profile} alt="profile" />
+    <div className="w-full h-full flex flex-col bg-white p-2 shadow-md hover:bg-slate-50">
+      <Image
+        src={`/blog/images/posts/${post.path}.png`}
+        alt="profile"
+        width="500"
+        height="500"
+      />
       <div className="h-auto flex flex-col justify-center p-2 w-full">
         <div className="flex justify-end text-xs">{post.date}</div>
         <div className="w-full flex justify-center flex-col items-center gap-3">
