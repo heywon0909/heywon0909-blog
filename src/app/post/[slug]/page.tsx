@@ -1,3 +1,25 @@
-export default function PostPage() {
-  return <div className="w-2/3 flex justify-center bg-red-100">타니</div>;
+import PostFeed from "@/components/post/PostFeed";
+import { getPostInfo, getPost, getPosts } from "@/service/posts";
+
+export async function generateStaticParams() {
+  const posts = await getPosts();
+
+  return posts.map((post) => ({
+    slug: post.id,
+  }));
+}
+export default async function PostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
+  const post = await getPostInfo(slug);
+  const postDetail = await getPost(slug);
+
+  return (
+    <div className="w-2/3 flex">
+      <PostFeed data={post} detail={postDetail} />
+    </div>
+  );
 }
