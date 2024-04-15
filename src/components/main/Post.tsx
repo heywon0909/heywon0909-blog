@@ -9,7 +9,7 @@ export default function Post({ post }: Props) {
   return (
     <Link
       href={`/post/${post.id}`}
-      className="w-full flex flex-col bg-white p-2 shadow-md hover:bg-slate-50 cursor-pointer justify-between"
+      className="flex flex-col bg-white p-2 shadow-md hover:bg-slate-50 cursor-pointer justify-between w-full"
     >
       <div className="relative">
         <Image

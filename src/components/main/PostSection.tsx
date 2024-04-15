@@ -5,7 +5,7 @@ import PostTitle from "./PostTitle";
 export default async function PostSection() {
   const posts = await getPosts();
   return (
-    <div className="flex flex-col w-full">
+    <div className="w-11/12 h-auto flex flex-col">
       <PostTitle title="You may like" />
       <PostList posts={posts} />
     </div>
