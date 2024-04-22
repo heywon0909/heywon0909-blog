@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function HeaderList() {
   return (
-    <div className="flex gap-4 text-base">
+    <div className="flex gap-4 text-base text-white">
       <Link href="/">Home</Link>
       <Link href="/about">about</Link>
       <Link href="/posts">posts</Link>

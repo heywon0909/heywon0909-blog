@@ -1,16 +1,10 @@
+import { handleSubmit } from "@/service/form";
+import { useFormState } from "react-dom";
+const initialState = {
+  message: "",
+};
 export default function page() {
-  async function handleSubmit(formData: FormData) {
-    "use server";
-
-    const rawFormData = {
-      customerId: formData.get("customerId"),
-      email: formData.get("email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
-
-    console.log("rawFormData", rawFormData);
-  }
+  const [state, formAction] = useFormState(handleSubmit, initialState);
 
   return (
     <div className="w-full h-full flex justify-center items-center">
@@ -19,7 +13,7 @@ export default function page() {
         <span className="text-xs">hw731911@gmail.com</span>
         <form
           className="w-full h-full  flex flex-col bg-slate-800 p-2 text-white rounded-md gap-3"
-          action={handleSubmit}
+          action={formAction}
         >
           <label htmlFor="email">email</label>
           <input type="text" id="email" name="email" className="text-black" />
