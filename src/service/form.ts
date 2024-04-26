@@ -1,3 +1,4 @@
+"use server";
 import { z } from "zod";
 interface SubmitData {
   email: string;
@@ -13,20 +14,20 @@ const schema = z.object({
   subject: z.string(),
   message: z.string(),
 });
-export async function handleSubmit(formData: FormData) {
-  "use server";
 
+export async function handleSubmit(prevData: any, formData: FormData) {
   const validatedFields = schema.safeParse({
     email: formData.get("email"),
     subject: formData.get("subject"),
     message: formData.get("message"),
   });
+  console.log("formData", formData);
 
   if (!validatedFields.success) {
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
+      error: validatedFields.error.flatten().fieldErrors,
+      message: "오류가 발생하였습니다.",
     };
   }
-
-  console.log("rawFormData", validatedFields);
+  return { message: "제출되었습니다." };
 }
