@@ -1,7 +1,10 @@
 "use client";
 import { TPost } from "@/service/posts";
+import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Image from "next/image";
 import Markdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+// import remarkGfm from "remark-gfm";
 
 interface Props {
   data: TPost;
@@ -28,8 +31,31 @@ export default function PostFeed({ data, detail }: Props) {
           </div>
         </div>
       </div>
-      <div>
-        <Markdown>{detail}</Markdown>
+      <div className="text-white">
+        <Markdown
+          components={{
+            code(props) {
+              const { children, className, node, ...rest } = props;
+              const match = /language-(\w+)/.exec(className || "");
+              return match ? (
+                <SyntaxHighlighter
+                  {...rest}
+                  PreTag="div"
+                  language={match[1]}
+                  style={a11yDark}
+                >
+                  {String(children).replace(/\n$/, "")}
+                </SyntaxHighlighter>
+              ) : (
+                <code {...rest} className={className}>
+                  {children}
+                </code>
+              );
+            },
+          }}
+        >
+          {detail}
+        </Markdown>
       </div>
     </div>
   );
