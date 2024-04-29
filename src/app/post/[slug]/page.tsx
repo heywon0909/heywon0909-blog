@@ -18,7 +18,7 @@ export default async function PostPage({
   const postDetail = await getPost(slug);
 
   return (
-    <div className="w-2/3 flex">
+    <div className="sm:w-2/3 w-11/12 flex">
       <PostFeed data={post} detail={postDetail} />
     </div>
   );
