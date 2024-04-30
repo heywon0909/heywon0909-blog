@@ -9,7 +9,7 @@ export default function PostList({ posts }: Props) {
   const isPosts = Array.isArray(posts) && posts.length > 0;
   if (isPosts) {
     return (
-      <div className="grid grid-cols-3 gap-4 mb-20">
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 mb-20">
         {posts.map((post) => (
           <Post post={post} key={post.id} />
         ))}
