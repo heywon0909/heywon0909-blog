@@ -1,7 +1,7 @@
 "use client";
 import { TPost } from "@/service/posts";
 import Carousel from "react-multi-carousel";
-import Post from "./Post";
+import Post from "../common/Post";
 import "react-multi-carousel/lib/styles.css";
 import { useState } from "react";
 interface Props {

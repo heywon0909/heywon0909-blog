@@ -10,7 +10,7 @@ export default function Header() {
     <header className="absolute top-0 w-full h-20 flex items-center p-2 justify-center cursor-pointer">
       <div className="w-5/6 flex justify-around">
         <h1
-          className="font-semibold text-2xl text-zinc-200 hover:text-white"
+          className="font-bold text-2xl text-purple-200 hover:text-white"
           onClick={handleMain}
         >
           heywon0909
