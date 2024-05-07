@@ -11,11 +11,15 @@ export type TPost = {
   featured: boolean;
 };
 // 게시글 목록 조회 api
-export async function getPosts(): Promise<Array<TPost>> {
+export async function getPosts(category?: string): Promise<Array<TPost>> {
   const filePath = path.join(process.cwd(), "data", "posts.json");
 
   const data = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(data);
+
+  const fetchingDataArr = JSON.parse(data);
+  if (category == null) return fetchingDataArr;
+
+  return fetchingDataArr.find((v: TPost) => v.category === category) ?? [];
 }
 
 // 게시글 정보 api

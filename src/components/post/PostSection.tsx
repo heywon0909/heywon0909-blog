@@ -1,7 +1,11 @@
 import { getPosts } from "@/service/posts";
 import PostList from "./PostList";
 
-export default async function PostSection() {
-  const posts = await getPosts();
+interface Props {
+  pathname?: string;
+}
+export default async function PostSection({ pathname }: Props) {
+  const posts = await getPosts(pathname ?? undefined);
+
   return <PostList posts={posts} />;
 }

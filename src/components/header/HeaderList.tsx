@@ -9,7 +9,7 @@ export default function HeaderList() {
       <Link href="/about" className="hover:text-white">
         about
       </Link>
-      <Link href="/post" className="hover:text-white">
+      <Link href="/posts" className="hover:text-white">
         posts
       </Link>
       <Link href="/contact" className="hover:text-white">
